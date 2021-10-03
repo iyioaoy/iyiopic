@@ -25,7 +25,7 @@
       <!--[ Archive title ]-->
       <title>存档: <data:blog.pageName.escaped/></title>
       <b:else/>
-      <title>文章: <data:blog.title.escaped/></title>
+      <title><data:blog.title.escaped/></title>
     </b:if>
     <b:elseif cond='data:view.isError'/>
     <!--[ Error title ]-->
@@ -126,7 +126,7 @@
   <b:if cond='data:view.isLayoutMode'>
     <!--[ CSS Layout ]-->
     <b:template-skin><![CDATA[
-body#layout:before{content:  'Fletro Pro v6.0'  ;position:absolute;top:15px;right:15px;font-size:.8rem;font-family:Roboto, sans-serif;color:rgba(0,0,0,0.52)}
+body#layout:before{content:  'Fletro Pro v6.0(CN优化版)'  ;position:absolute;top:15px;right:15px;font-size:.8rem;font-family:Roboto, sans-serif;color:rgba(0,0,0,0.52)}
 body#layout{width:1025px;margin:0 !important;padding:60px 0 0 !important;border:0 !important;text-align:left !important;position:relative}
 body#layout div.layout-widget-description{font-size:12px !important;line-height:1.6em}
 body#layout div.layout-title{font-size:15px !important}
@@ -1397,7 +1397,7 @@ footer .toTop:before{content:'Top'}
 #getLink .button{display: none}
 #getLink:target .button{display: inline-flex}
 /* Sample Ad ( Delete if ad unit has ben added ) */
-.ads-here{position:relative;display:flex;align-items:center;justify-content:center;min-height:90px;padding:15px;border:1px solid rgba(0,0,0,.05);color:#969896;font-size:10px;font-family:var(--font-body)} .ads-here:before{content:'Sample ad'}
+.ads-here{position:relative;display:flex;align-items:center;justify-content:center;min-height:90px;padding:15px;border:1px solid rgba(0,0,0,.05);color:#969896;font-size:10px;font-family:var(--font-body)} .ads-here:before{content:''}
 .ads-here:after{content:'';display:block;width:50px;height:8px;background-color:rgba(0,0,0,.05);border-radius:0 0 0 8px;position:absolute;top:0;right:0}
 ]]></b:skin>
     
@@ -1550,7 +1550,7 @@ footer .toTop:before{content:'Top'}
         <b:if cond='data:widgets.Blog.first.allBylineItems.author and data:post.author.authorPhoto.image'>
           <div class='postAuthorImage'>
             <b:if cond='!data:view.isPost'>
-              <div class='authorImage lazy' expr:data-bg='resizeImage(data:post.author.authorPhoto.image,18,&quot;1:1&quot;)'/>
+              <div class='authorImage lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.author.authorPhoto.image,18,&quot;1:1&quot;)'/>
               <b:else/>
               <div class='authorImage lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.author.authorPhoto.image,38,&quot;1:1&quot;)'/>
             </b:if>
@@ -2845,7 +2845,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                     
                     <b:tag class='postComment' cond='data:view.isPost' name='div'>
                       <!--[ Blogger Comments ]-->
-                      <b:include cond='data:view.isPost and !data:view.isPreview and data:post.allowComments' data='post' name='post-commentDisqus'/>
+                      <b:include cond='data:view.isPost and !data:view.isPreview and data:post.allowComments' data='post' name='threadedComments-modifV3'/>
                     </b:tag>
                   </b:tag>
                 </b:includable>
@@ -2926,7 +2926,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                           <li class='sharePreview'>
                             <div class='preview'>
                               <b:if cond='data:post.featuredImage'>
-                                <div class='previewImg lazy' expr:data-bg='resizeImage(data:post.featuredImage, 120, &quot;1:1&quot;)'/>
+                                <div class='previewImg lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.featuredImage, 120, &quot;1:1&quot;)'/>
                               </b:if>
                               <div class='previewContent'>
                                 <div class='previewTitle' expr:data-text='data:post.title'/>
