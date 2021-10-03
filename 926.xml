@@ -1507,7 +1507,7 @@ footer .toTop:before{content:'Top'}
       <b:includable id='post-authorProfile'>
         <div class='postAuthors'>
           <div class='authorImage'>
-            <div class='authorImg lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.author.authorPhoto.image,80,&quot;1:1&quot;)'>
+            <div class='authorImg lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.author.authorPhoto.image,80,&quot;1:1&quot;)'>
             </div>
           </div>
           <div class='authorInfo'>
@@ -1550,9 +1550,9 @@ footer .toTop:before{content:'Top'}
         <b:if cond='data:widgets.Blog.first.allBylineItems.author and data:post.author.authorPhoto.image'>
           <div class='postAuthorImage'>
             <b:if cond='!data:view.isPost'>
-              <div class='authorImage lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.author.authorPhoto.image,18,&quot;1:1&quot;)'/>
+              <div class='authorImage lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.author.authorPhoto.image,18,&quot;1:1&quot;)'/>
               <b:else/>
-              <div class='authorImage lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.author.authorPhoto.image,38,&quot;1:1&quot;)'/>
+              <div class='authorImage lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.author.authorPhoto.image,38,&quot;1:1&quot;)'/>
             </b:if>
           </div>
         </b:if>
@@ -1717,7 +1717,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
           
               <!--[ Header widget ]-->
               <b:section id='header-widget' maxwidgets='1' showaddelement='false'>
-                <b:widget id='Header1' locked='true' title='Theme Dummy 2 (Header)' type='Header' version='2' visible='true'>
+                <b:widget id='Header1' locked='true' title='OAOY (标题)' type='Header' version='2' visible='true'>
                   <b:widget-settings>
                     <b:widget-setting name='displayUrl'/>
                     <b:widget-setting name='displayHeight'>0</b:widget-setting>
@@ -1982,17 +1982,21 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   </b:widget>
                   <b:widget id='LinkList000' locked='true' title='Social Media Link' type='LinkList' version='2' visible='true'>
                     <b:widget-settings>
+                      <b:widget-setting name='link-5'>#</b:widget-setting>
+                      <b:widget-setting name='link-6'>#</b:widget-setting>
                       <b:widget-setting name='link-3'>#</b:widget-setting>
-                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
                       <b:widget-setting name='link-4'>#</b:widget-setting>
                       <b:widget-setting name='text-1'>Instagram</b:widget-setting>
-                      <b:widget-setting name='link-1'>#</b:widget-setting>
                       <b:widget-setting name='text-0'>Facebook</b:widget-setting>
-                      <b:widget-setting name='link-2'>#</b:widget-setting>
                       <b:widget-setting name='text-3'>Youtube</b:widget-setting>
-                      <b:widget-setting name='link-0'>#</b:widget-setting>
                       <b:widget-setting name='text-2'>Twitter</b:widget-setting>
+                      <b:widget-setting name='text-5'>Privacy</b:widget-setting>
                       <b:widget-setting name='text-4'>LinkedIn</b:widget-setting>
+                      <b:widget-setting name='text-6'>Custom Menu</b:widget-setting>
+                      <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                      <b:widget-setting name='link-1'>#</b:widget-setting>
+                      <b:widget-setting name='link-2'>#</b:widget-setting>
+                      <b:widget-setting name='link-0'>#</b:widget-setting>
                     </b:widget-settings>
                     <b:includable id='main'>
                       <b:include name='content'/>
@@ -2342,7 +2346,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='snippetedPostThumbnail'>
                   <div class='itemThumbnail'>
                     <a expr:href='data:post.url.canonical'>
-                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='"https://images.weserv.nl/?url=" + resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='"https://images.weserv.nl/?url=" + data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='&quot;https://images.weserv.nl/?url=&quot; + data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                     </a>
                   </div>
                 </b:includable>
@@ -2547,7 +2551,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   </div>
                 </b:includable>
               </b:widget>
-              <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+              <b:widget id='Blog1' locked='true' title='博文' type='Blog' version='2' visible='true'>
                 <b:widget-settings>
                   <b:widget-setting name='commentLabel'>Comment</b:widget-setting>
                   <b:widget-setting name='showShareButtons'>true</b:widget-setting>
@@ -2562,7 +2566,6 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   <b:widget-setting name='showTimestamp'>true</b:widget-setting>
                   <b:widget-setting name='postsPerAd'>1</b:widget-setting>
                   <b:widget-setting name='style.bordercolor'>#000000</b:widget-setting>
-                  <b:widget-setting name='backlinksLabel'>Link ke posting ini</b:widget-setting>
                   <b:widget-setting name='showDateHeader'>false</b:widget-setting>
                   <b:widget-setting name='style.textcolor'>#48525c</b:widget-setting>
                   <b:widget-setting name='showCommentLink'>true</b:widget-setting>
@@ -2765,7 +2768,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                       <!--[ Post thumbnail ]-->
                       <div class='postThumbnail'>
                         <a expr:href='data:post.url'>
-                          <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='"https://images.weserv.nl/?url=" + resizeImage(data:post.featuredImage, 600, &quot;18:9&quot;)' src='"https://images.weserv.nl/?url=" + data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                          <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;18:9&quot;)' src='&quot;https://images.weserv.nl/?url=&quot; + data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                         </a>
                       </div>
                     </b:if>
@@ -2926,7 +2929,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                           <li class='sharePreview'>
                             <div class='preview'>
                               <b:if cond='data:post.featuredImage'>
-                                <div class='previewImg lazy' expr:data-bg='"https://images.weserv.nl/?url=" + resizeImage(data:post.featuredImage, 120, &quot;1:1&quot;)'/>
+                                <div class='previewImg lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 120, &quot;1:1&quot;)'/>
                               </b:if>
                               <div class='previewContent'>
                                 <div class='previewTitle' expr:data-text='data:post.title'/>
@@ -3296,7 +3299,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
           <!--[ Sidebar content ]-->
           <b:tag class='sidebar' cond='data:view.isHomepage or data:view.isPost' name='aside'>
             <b:section cond='data:view.isHomepage or data:view.isPost' id='side-widget' showaddelement='true'>
-              <b:widget cond='data:view.isHomepage' id='Profile00' locked='false' title='Author profile' type='Profile' version='2' visible='true'>
+              <b:widget cond='data:view.isHomepage' id='Profile00' locked='false' title='Author profile' type='Profile' version='2' visible='false'>
                 <b:widget-settings>
                   <b:widget-setting name='showaboutme'>true</b:widget-setting>
                   <b:widget-setting name='showlocation'>true</b:widget-setting>
@@ -3568,7 +3571,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='snippetedPostThumbnail'>
                   <div class='itemThumbnail'>
                     <a expr:href='data:post.url.canonical'>
-                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='"https://images.weserv.nl/?url=" + resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='"https://images.weserv.nl/?url=" + data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='&quot;https://images.weserv.nl/?url=&quot; + data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                     </a>
                   </div>
                 </b:includable>
@@ -3747,15 +3750,11 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   <b:widget-settings>
                     <b:widget-setting name='content'>&lt;div class=&#39;aboutUs&#39;&gt;
   &lt;div class=&#39;aboutTitle&#39;&gt;
-    &lt;div class=&#39;titleText&#39; data-text=&#39;Made with coffee by&#39;&gt;
-      &lt;h3&gt;Fletro Pro&lt;/h3&gt;
+    &lt;div class=&#39;titleText&#39; data-text=&#39;Created by&#39;&gt;
+      &lt;h3&gt;IYIO.NET&lt;/h3&gt;
     &lt;/div&gt;
-
-    &lt;!--[ Delete comment tag on section bellow and change data-src=&#39;#&#39; attribute with your logo url ]--&gt;
-    &lt;!-- &lt;img class=&#39;lazy&#39; alt=&#39;Jago Desain&#39; data-src=&#39;#&#39; src=&#39;data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=&#39;/&gt; --&gt;
-
   &lt;/div&gt;
-  &lt;p class=&#39;aboutDesc&#39;&gt;Mauris lacus dolor, ultricies vel sodales ac, egestas vel eros.&lt;/p&gt;
+  &lt;p class=&#39;aboutDesc&#39;&gt;坚持Internet自身的自由开放精神&#65292; 提倡自由&#12289;平等&#12289;开放&#12289;健康 &#65281;&lt;/p&gt;
 &lt;/div&gt;</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
@@ -3766,17 +3765,21 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 </b:widget>
                 <b:widget id='LinkList001' locked='false' title='Social Media Link' type='LinkList' version='2' visible='true'>
                   <b:widget-settings>
+                    <b:widget-setting name='link-5'>#</b:widget-setting>
+                    <b:widget-setting name='link-6'>#</b:widget-setting>
                     <b:widget-setting name='link-3'>#</b:widget-setting>
-                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
                     <b:widget-setting name='link-4'>#</b:widget-setting>
                     <b:widget-setting name='text-1'>Instagram</b:widget-setting>
-                    <b:widget-setting name='link-1'>#</b:widget-setting>
                     <b:widget-setting name='text-0'>Facebook</b:widget-setting>
-                    <b:widget-setting name='link-2'>#</b:widget-setting>
                     <b:widget-setting name='text-3'>Youtube</b:widget-setting>
-                    <b:widget-setting name='link-0'>#</b:widget-setting>
                     <b:widget-setting name='text-2'>Twitter</b:widget-setting>
+                    <b:widget-setting name='text-5'>Pinterest</b:widget-setting>
                     <b:widget-setting name='text-4'>LinkedIn</b:widget-setting>
+                    <b:widget-setting name='text-6'>Whatsapp</b:widget-setting>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='link-1'>#</b:widget-setting>
+                    <b:widget-setting name='link-2'>#</b:widget-setting>
+                    <b:widget-setting name='link-0'>#</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
                     <b:include name='content'/>
@@ -3826,13 +3829,15 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 </b:widget>
               </b:section>
               <b:section id='footer-widget-2' maxwidgets='2' showaddelement='true'>
-                <b:widget id='LinkList02' locked='false' title='Company' type='LinkList' version='2' visible='true'>
+                <b:widget id='LinkList02' locked='false' title='关于' type='LinkList' version='2' visible='true'>
                   <b:widget-settings>
                     <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                    <b:widget-setting name='text-1'>Blog</b:widget-setting>
-                    <b:widget-setting name='link-1'>#</b:widget-setting>
-                    <b:widget-setting name='text-0'>About</b:widget-setting>
-                    <b:widget-setting name='link-0'>#</b:widget-setting>
+                    <b:widget-setting name='text-1'>联系方式</b:widget-setting>
+                    <b:widget-setting name='link-1'>https://www.iyio.net/p/contact.html</b:widget-setting>
+                    <b:widget-setting name='text-0'>关于我们</b:widget-setting>
+                    <b:widget-setting name='link-2'>https://www.iyio.net/p/contact.html</b:widget-setting>
+                    <b:widget-setting name='link-0'>https://www.iyio.net/p/about.html</b:widget-setting>
+                    <b:widget-setting name='text-2'>广告合作</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
                     <b:include name='widget-title'/>
@@ -3856,13 +3861,15 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 </b:widget>
               </b:section>
               <b:section id='footer-widget-3' maxwidgets='2' showaddelement='true'>
-                <b:widget id='LinkList03' locked='false' title='Product &amp;amp; Service' type='LinkList' version='2' visible='true'>
+                <b:widget id='LinkList03' locked='false' title='导航' type='LinkList' version='2' visible='true'>
                   <b:widget-settings>
                     <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                    <b:widget-setting name='text-1'>Other Product</b:widget-setting>
-                    <b:widget-setting name='link-1'>https://unplug.jagodesain.com</b:widget-setting>
-                    <b:widget-setting name='text-0'>Blogger Theme</b:widget-setting>
-                    <b:widget-setting name='link-0'>https://theme.jagodesain.com</b:widget-setting>
+                    <b:widget-setting name='text-1'>免责声明</b:widget-setting>
+                    <b:widget-setting name='link-1'>https://www.iyio.net/p/services.html</b:widget-setting>
+                    <b:widget-setting name='text-0'>网站地图</b:widget-setting>
+                    <b:widget-setting name='link-2'>https://www.iyio.net/p/services.html</b:widget-setting>
+                    <b:widget-setting name='link-0'>https://www.iyio.net/p/sitemaps.html</b:widget-setting>
+                    <b:widget-setting name='text-2'> 隐私声明</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
                     <b:include name='widget-title'/>
@@ -3886,25 +3893,16 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 </b:widget>
               </b:section>
               <b:section id='footer-widget-4' maxwidgets='2' showaddelement='true'>
-                <b:widget id='FollowByEmail00' locked='false' title='Get updates' type='FollowByEmail' version='2' visible='true'>
+                <b:widget id='HTML1' locked='false' title='联系我们' type='HTML' visible='true'>
+                  <b:widget-settings>
+                    <b:widget-setting name='content'><![CDATA[<p>您可以直接给我们取得联系！</p><p><a class='button telegram' href='https://t.me/pygllc'><i class='icon telegram'></i>Telegram</a></p>]]></b:widget-setting>
+                  </b:widget-settings>
                   <b:includable id='main'>
-                    <b:include name='widget-title'/>
-                    <b:include name='content'/>
-                  </b:includable>
-                  <b:includable id='content'>
-                    <div class='follow-inner'>
-                      <label class='follow-text' for='email-input'>
-                        <span>Get updates right in your inbox. Join to get notified with all new stuff</span>
-                      </label>
-                    
-                      <form expr:action='&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath' method='get' target='_blank'>
-                        <input autocomplete='on' class='followAddress' id='email-input' name='email' placeholder='e.g. youremail@gmail.com' type='email'/>
-                        <input class='followSubmit' expr:value='data:messages.subscribe' id='email-submit' type='submit'/>
-                        <input expr:value='data:feedPath' name='uri' type='hidden'/>
-                        <input name='loc' type='hidden' value='en_US'/>
-                      </form>
-                    </div>
-                  </b:includable>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
                 </b:widget>
               </b:section>
             </div>
@@ -3939,7 +3937,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
         <section class='errorPage'>
           <div class='errorContent'>
             <h3><span>404</span>当前页面消失了!</h3>
-            <p>你要查看的网页可能已被删除,更改,或者暂时不可用！</p>
+            <p>你要查看的网页可能已被删除,更改,或者暂时不可用&#65281;</p>
             <a class='button' expr:href='data:blog.homepageUrl.canonical'>返回首页</a>
           </div>
         </section>
