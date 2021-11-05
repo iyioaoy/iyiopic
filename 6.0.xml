@@ -25,11 +25,11 @@
       <!--[ Archive title ]-->
       <title>存档: <data:blog.pageName.escaped/></title>
       <b:else/>
-      <title>文章: <data:blog.title.escaped/></title>
+      <title><data:blog.title.escaped/></title>
     </b:if>
     <b:elseif cond='data:view.isError'/>
     <!--[ Error title ]-->
-    <title>404: 页面未找到</title>
+    <title>Error 404: 页面未找到</title>
     <b:else/>
     <!--[ SingleItem title ]-->
     <title><data:blog.pageName.escaped/> - <data:blog.title.escaped/></title>
@@ -50,7 +50,7 @@
       <b:else/>
       <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title' name='description'/>
     </b:if>
-    <meta expr:content='data:blog.title.escaped + &quot;, &quot; + data:blog.pageName.escaped + &quot;, 科学上网(IYIO.NET),V2Ray,Trojan,Xray,SSR,OpenWrt,iKuai,RouterOS(ROS),VPS,VPN,软件/脚本,软路由,免费VPN,免费节点分享,服务器 &quot;' name='keywords'/>
+    <meta expr:content='data:blog.title.escaped + &quot;, &quot; + data:blog.pageName.escaped + &quot;, (IYIO.NET),软路由,服务器,免费节点,自建机场VPN教程,VPN一键脚本,VPS推荐,VPN推荐,V2Ray,Trojan,Xray,SSR,OpenWrt,iKuai,RouterOS(ROS),VPS,VPN,Esxi &quot;' name='keywords'/>
     <b:tag cond='data:view.isPost' expr:href='resizeImage(data:blog.postImageUrl, 0)' name='link' rel='image_src'/>
   
     <!--[ Generator and rrs ]-->
@@ -92,9 +92,9 @@
     </b:if>
     <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped' property='og:image:alt'/>
     <b:if cond='data:blog.postImageUrl'>
-      <meta expr:content='resizeImage(data:blog.postImageUrl, 0)' property='og:image'/>
+      <meta expr:content='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:blog.postImageUrl, 0)' property='og:image'/>
       <b:else/>
-      <meta content='Add_your_image_url_here' property='og:image'/>
+      <meta content='https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/a/AVvXsEjFNPGvIacUPYJXi5cx8RsQlk4UkDfhNbWBpYPYhUMlFwhfo2wf5CdiB5nZwHSF2K42h_X2opQER_0PU68IwJrHlerpgNky_rjbSEVnZSF5eyZ2ytZ8tuO7GZaUbSo6rCZbX2I6jcmnn8rplXJoZbNzOqQg_f-QboOt5sIJwoTR04vZpEWGi5Kqntq2xw' property='og:image'/>
     </b:if>
     
     <!--[ Twitter Card ]-->
@@ -116,9 +116,9 @@
     <meta content='summary_large_image' name='twitter:card'/>
     <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped' name='twitter:image:alt'/>
     <b:if cond='data:blog.postImageUrl'>
-      <meta expr:content='resizeImage(data:blog.postImageUrl, 0)' name='twitter:image:src'/>
+      <meta expr:content='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:blog.postImageUrl, 0)' name='twitter:image:src'/>
       <b:else/>
-      <meta content='Add_your_image_url_here' name='twitter:image:src'/>
+      <meta content='https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/a/AVvXsEjFNPGvIacUPYJXi5cx8RsQlk4UkDfhNbWBpYPYhUMlFwhfo2wf5CdiB5nZwHSF2K42h_X2opQER_0PU68IwJrHlerpgNky_rjbSEVnZSF5eyZ2ytZ8tuO7GZaUbSo6rCZbX2I6jcmnn8rplXJoZbNzOqQg_f-QboOt5sIJwoTR04vZpEWGi5Kqntq2xw' name='twitter:image:src'/>
     </b:if>
     
   </b:if>
@@ -338,7 +338,7 @@ svg.c-2, svg .c-2{fill:var(--icon-secColor); opacity:.4}
 /* Main Element */
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{position:relative;margin:0;padding:0!important;width:100%;font-family:var(--font-body);font-size:14px;color:var(--body-color);background-color:var(--body-bgColor);-webkit-font-smoothing: antialiased; word-break: break-word;}
-.sectionInner{margin:0 auto;max-width:1360px;padding-left:30px;padding-right:30px}
+.sectionInner{margin:0 auto;max-width:1360px;padding-left:100px;padding-right:100px}
 
 /* Header */
 header{width:100%;height:var(--header-height);background-color:var(--header-bgColor);color:var(--header-text);z-index:10;-webkit-transition:var(--transition-1);transition:var(--transition-1);border-bottom:1px solid var(--header-borderColor); position:-webkit-sticky;position:sticky;top:0}
@@ -444,48 +444,9 @@ header .headerIcon .navShare svg{height:19px}
 .blogTitle .postMode .svg-2, .gridMode .blogTitle .postMode .svg-1{display:none}
 
 .onBlog .blogContent .mainbar{flex:0 0 100%;max-width:1140px}
-.onPost .blogContent .mainbar{max-width:var(--post-maxContent)}
+.onPost .blogContent .mainbar{min-width:calc(100% - 350px);max-width:var(--post-maxContent)}
+.onPage .blogContent{display:block}
 .onPage .blogContent .mainbar{max-width:var(--page-maxContent);margin-left:auto;margin-right:auto}
-
-/* 3-Column CSS */
-.onHome .blogContent .mainbar{flex:0 0 calc(100% - 700px);order:2}
-.onHome .blogContent .leftbar{flex:0 0 300px;margin-right:50px;order:1}
-.onHome .blogContent .sidebar{order:3}
-.onHome article .postThumbnail, .onHome .FeaturedPost .itemThumbnail{flex:0 0 40%}
-.onHome article .postContent, .onHome .FeaturedPost .itemContent{width:calc(100% - 40%)}
-.onHome article .postEntry.snippet, .onHome .FeaturedPost .itemEntry{display:none}
-.onHome article .postTitle, .onHome .FeaturedPost .itemTitle{font-size:1.2rem}
-.onHome.gridMode .blogPosts .hentry{width:calc(50% - 30px)}
-@media screen and (max-width:1100px){
-.onHome .blogContent .mainbar{flex:0 0 calc(100% - 650px)}
-.onHome .blogContent .leftbar{flex:0 0 250px}
-.onHome article .postTitle, .onHome .FeaturedPost .itemTitle{font-size:1rem}
-.onHome article .postHeader, .onHome article .postInfo{font-size:12px}
-.onHome article .postThumbnail, .onHome .FeaturedPost .itemThumbnail{flex:0 0 100px}
-.onHome article .postThumbnail a, .onHome .FeaturedPost .itemThumbnail a{padding-top:100%}
-.onHome.gridMode article .postThumbnail a{padding-top:52.335%}
-}
-@media screen and (max-width:896px){
-.onHome .blogContent .leftbar{margin:80px auto 0;max-width:600px}
-.onHome article .postThumbnail, .onHome .FeaturedPost .itemThumbnail{flex:0 0 calc(50% - 15px)}
-.onHome article .postThumbnail a, .onHome .FeaturedPost .itemThumbnail a{padding-top:52.335%}
-.onHome article .postContent, .onHome .FeaturedPost .itemContent{width:calc(50% + 15px)}
-.onHome article .postEntry.snippet, .onHome .FeaturedPost .itemEntry{display:-webkit-box}
-.onHome article .postTitle, .onHome .FeaturedPost .itemTitle{font-size:var(--item-titleSize)}
-.onHome article .postHeader, .onHome article .postInfo{font-size:90%}
-}
-@media screen and (max-width:640px){
-.onHome article .postTitle, .onHome .FeaturedPost .itemTitle{font-size:1.1rem}
-.onHome article .postHeader, .onHome article .postInfo{font-size:88%}
-}
-@media screen and (max-width:480px){
-.onHome .FeaturedPost .itemContent{width:100%}
-.onHome article .postThumbnail{flex:0 0 100px}
-.onHome article .postThumbnail a{padding-top:100%}
-.onHome article .postHeader, .onHome article .postInfo{font-size:11px}
-.onHome article .postEntry.snippet{display:none}
-.onHome article .postTitle{font-size:14px}
-}
 
 /* Grid mode */
 .gridMode .blogTitle .postMode:before{content:'List'}
@@ -763,7 +724,7 @@ article .postNav > *:not(:last-child){margin-right:8px}
 .Blog .blogPager .jsLoad svg{margin-right:10px}
 
 /* Widget Blog Author */
-.Blog .postAuthors{display:flex;max-width:400px;margin:40px 0;padding:10px 12px;line-height:1.8em;border-radius:2px;box-shadow: rgb(0 0 0 / 7%) 0 10px 15px -5px, rgb(0 0 0 / 3%) 0 4px 6px -2px; font-size:90%;background-color:var(--content-bg)}
+.Blog .postAuthors{display:flex;max-width:400px;margin:40px 0;padding:10px 12px;line-height:1.8em;border-radius:2px;box-shadow: rgb(0 0 0 / 7%) 0 10px 15px -5px, rgb(0 0 0 / 3%) 0 4px 6px -2px; font-size:90%;background-color:#f1f1f0}
 .Blog .postAuthors .authorImage{flex-shrink:0;margin-right:12px; display:flex;align-items:center}
 .Blog .postAuthors .authorImg{position:relative;width:36px;height:36px;border-radius:50%;background-color:rgba(0,0,0,.03);background-size:cover;background-position:center;background-repeat:no-repeat}
 .Blog .postAuthors .authorInfo{flex-grow:1}
@@ -1091,8 +1052,8 @@ footer .toTop svg{stroke:var(--foot-icon);margin-left:5px}
 /* Download Button */
 .downloadInfo{max-width:500px;background-color:#fefefe;box-shadow:0 10px 8px -8px rgb(0 0 0 / 12%);border:1px solid rgba(0,0,0,.05);border-radius:2px;padding:17px;margin-top:1.7em;margin-bottom:1.7em;display:flex;align-items:center;font-size:15px}
 .downloadInfo a, .downloadInfo .fileType{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:50px;height:50px;padding:10px;background:#ebeced;border-radius:5px}
-.downloadInfo a{background-color:var(--link-bgColor); color:#fefefe;margin:0;border-radius:50px}
-.downloadInfo a .icon{margin:0}
+.downloadInfo a{background-color:var(--link-bgColor); color:#fefefe;margin:0;border-radius:3px;width:auto;height:auto;line-height:1.5em;font-size:13px;padding:10px 12px}
+.downloadInfo a:after{content:attr(aria-label)}
 .downloadInfo .fileType:before{content:attr(data-text);font-size:90%}
 .downloadInfo .fileName{width:calc(100% - 100px);padding:0 15px}
 .downloadInfo .fileName > *{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1277,6 +1238,12 @@ article .postReference{font-size:11px}
 article .itemThumbnail{margin-bottom:20px}
 article .itemContent{width:100%;padding:0}
 article .itemEntry{font-size:88%}
+
+.downloadInfo{padding:12px}
+.downloadInfo a{width:50px;height:50px;border-radius:5px}
+.downloadInfo a:after{display:none}
+.downloadInfo a .icon{margin:0}
+
 .FeaturedPost article{display:block}
 .FeaturedPost article .postHeader, .FeaturedPost article .postInfo{font-size:90%}
 .Blog .breadcrumbs .homeLink, .Blog .shareIcon.facebook a:after, .Blog .shareIcon.whatsapp a:after, .Blog .shareIcon.twitter a:after{display:none}
@@ -1382,7 +1349,6 @@ footer .toTop:before{content:'Top'}
 .darkMode .headerMenu .section{background-color:var(--dark-bgSec)}
 .darkMode .headerMenu ul.htmlMenu ul{background-color:transparent}
 }
-
 /* Safelink */
 :root {
 --link-outline-color: #48525c ;
@@ -1396,9 +1362,8 @@ footer .toTop:before{content:'Top'}
 #getLink{margin: 5px 0}
 #getLink .button{display: none}
 #getLink:target .button{display: inline-flex}
-
 /* Sample Ad ( Delete if ad unit has ben added ) */
-.ads-here{position:relative;display:flex;align-items:center;justify-content:center;min-height:90px;padding:15px;border:1px solid rgba(0,0,0,.05);color:#969896;font-size:10px;font-family:var(--font-body)} .ads-here:before{content:'Sample ad'}
+.ads-here{position:relative;display:flex;align-items:center;justify-content:center;min-height:90px;padding:15px;border:1px solid rgba(0,0,0,.05);color:#969896;font-size:10px;font-family:var(--font-body)} .ads-here:before{content:''}
 .ads-here:after{content:'';display:block;width:50px;height:8px;background-color:rgba(0,0,0,.05);border-radius:0 0 0 8px;position:absolute;top:0;right:0}
 ]]></b:skin>
     
@@ -1410,12 +1375,12 @@ footer .toTop:before{content:'Top'}
     <!--[ Blogger defaultmarkups ]-->
     <b:defaultmarkup type='Common'>
       
-      <!--[ 信息流广告 ]-->
+      <!--[ In-feed ad ]-->
       <b:includable id='post-adIn'>
         <div class='hentry postAdIn'>
           <!--[ 信息流广告 ]-->
           
-          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-3297688630930670' data-ad-format='fluid' data-ad-layout-key='-5d+cj+3n+y-3a' data-ad-slot='0000000000' style='display:block'/>
+          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-0000000000000000' data-ad-format='fluid' data-ad-layout-key='-5d+cj+3n+y-3a' data-ad-slot='0000000000' style='display:block'/>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
         </div>
       </b:includable>
@@ -1425,27 +1390,27 @@ footer .toTop:before{content:'Top'}
         <div class='postAd'>
           <!--[ 热门文章广告 ]-->
           
-          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-3297688630930670' data-ad-format='horizontal' data-ad-slot='0000000000' data-full-width-responsive='false' style='display:block'/>
+          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-0000000000000000' data-ad-format='horizontal' data-ad-slot='0000000000' data-full-width-responsive='false' style='display:block'/>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
         </div>
       </b:includable>
       
-      <!--[ 底部文章广告 ]-->
+      <!--[ Bottom article ad ]-->
       <b:includable id='post-adBot'>
         <div class='postAd'>
-          <!--[ Bottom article Ad ]-->
+          <!--[ 底部文章广告 ]-->
           
-          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-3297688630930670' data-ad-format='horizontal' data-ad-slot='0000000000' data-full-width-responsive='false' style='display:block'/>
+          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-0000000000000000' data-ad-format='horizontal' data-ad-slot='0000000000' data-full-width-responsive='false' style='display:block'/>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
         </div>
       </b:includable>
       
-      <!--[ 匹配内容广告 ]-->
+      <!--[ Matched content Ad ]-->
       <b:includable id='post-relatedAd'>
         <div class='relatedPosts'>
-          <!--[ Matched content Ad ]-->
+          <!--[ 匹配内容广告 ]-->
           
-          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-3297688630930670' data-ad-format='autorelaxed' data-ad-slot='0000000000' style='display:block'/>
+          <!--<ins class='adsbygoogle' data-ad-client='ca-pub-0000000000000000' data-ad-format='autorelaxed' data-ad-slot='0000000000' style='display:block'/>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
         </div>
       </b:includable>
@@ -1499,7 +1464,7 @@ footer .toTop:before{content:'Top'}
                 callBack:function(){}
               }
             </script>
-            <script>/*<![CDATA[*/ var randomRelatedIndex,showRelatedPost;(function(n,m,k){var d={widgetTitle:"<h3 class='title'>Related Posts</h3>",widgetStyle:1,homePage:"http://www.iyio.net",numPosts:7,summaryLength:320,titleLength:"auto",thumbnailSize:200,noImage:"data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",containerId:"related-posts",newTabLink:false,moreText:"Read more",callBack:function(){}}; for(var f in relatedPostConfig){d[f]=(relatedPostConfig[f]=="undefined")?d[f]:relatedPostConfig[f]}var j=function(a){var b=m.createElement("script");b.async="async";b.rel="preload";b.src=a;k.appendChild(b)},o=function(b,a){return Math.floor(Math.random()*(a-b+1))+b},l=function(a){var p=a.length,c,b;if(p===0){return false}while(--p){c=Math.floor(Math.random()*(p+1));b=a[p];a[p]=a[c];a[c]=b}return a},e=(typeof labelArray=="object"&&labelArray.length>0)?"/-/"+l(labelArray)[0]:"",h=function(b){var c=b.feed.openSearch$totalResults.$t-d.numPosts,a=o(1,(c>0?c:1));j(d.homePage.replace(/\/$/,"")+"/feeds/posts/summary"+e+"?alt=json-in-script&orderby=updated&start-index="+a+"&max-results="+d.numPosts+"&callback=showRelatedPost")},g=function(z){var s=document.getElementById(d.containerId),x=l(z.feed.entry),A=d.widgetStyle,c=d.widgetTitle+'<ul class="related style-'+A+'">',b=d.newTabLink?' target="_blank"':"",y='<!-- <div class="clear"/> -->',v,t,w,r,u;if(!s){return}for(var q=0;q<d.numPosts;q++){if(q==x.length){break}t=x[q].title.$t;w=(d.titleLength!=="auto"&&d.titleLength<t.length)?t.substring(0,d.titleLength)+"&hellip;":t; r=("media$thumbnail"in x[q]&&d.thumbnailSize!==false)?x[q].media$thumbnail.url.replace(/.*?:\/\//g , "//").replace(/\/s[0-9]+(\-c)?/, "/s"+d.thumbnailSize):d.noImage;u=("summary"in x[q]&&d.summaryLength>0)?x[q].summary.$t.replace(/<br ?\/?>/g," ").replace(/<.*?>/g,"").replace(/[<>]/g,"").substring(0,d.summaryLength)+"&hellip;":"";for(var p=0,a=x[q].link.length;p<a;p++){v=(x[q].link[p].rel=="alternate")?x[q].link[p].href:"#"} if(A==2){c+='<li><div class="item"><div class="itemThumbnail"><a aria-label="'+w+'" href="'+v+'"><div class="lazy" data-bg="'+r+'"></div></a></div><div class="itemTitle"><a href="'+v+'"><span>'+w+'</span></a></div></div></li>'} else{c+='<li><div class="item"><div class="itemThumbnail"><a aria-label="'+w+'" href="'+v+'"><div class="lazy" data-bg="'+r+'"></div></a></div><div class="itemTitle"><a href="'+v+'"><span>'+w+'</span></a></div></div></li>'} }s.innerHTML=c+="</ul>";d.callBack()};randomRelatedIndex=h;showRelatedPost=g;j(d.homePage.replace(/\/$/,"")+"/feeds/posts/summary"+e+"?alt=json-in-script&orderby=updated&max-results=0&callback=randomRelatedIndex")})(window,document,document.getElementsByTagName("head")[0]); /*]]>*/</script>
+            <script>/*<![CDATA[*/ var randomRelatedIndex,showRelatedPost;(function(n,m,k){var d={widgetTitle:"<h3 class='title'>Related Posts</h3>",widgetStyle:1,homePage:"http://www.iyio.net",numPosts:7,summaryLength:320,titleLength:"auto",thumbnailSize:200,noImage:"data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",containerId:"related-posts",newTabLink:false,moreText:"Read more",callBack:function(){}}; for(var f in relatedPostConfig){d[f]=(relatedPostConfig[f]=="undefined")?d[f]:relatedPostConfig[f]}var j=function(a){var b=m.createElement("script");b.async="async";b.rel="preload";b.src=a;k.appendChild(b)},o=function(b,a){return Math.floor(Math.random()*(a-b+1))+b},l=function(a){var p=a.length,c,b;if(p===0){return false}while(--p){c=Math.floor(Math.random()*(p+1));b=a[p];a[p]=a[c];a[c]=b}return a},e=(typeof labelArray=="object"&&labelArray.length>0)?"/-/"+l(labelArray)[0]:"",h=function(b){var c=b.feed.openSearch$totalResults.$t-d.numPosts,a=o(1,(c>0?c:1));j(d.homePage.replace(/\/$/,"")+"/feeds/posts/summary"+e+"?alt=json-in-script&orderby=updated&start-index="+a+"&max-results="+d.numPosts+"&callback=showRelatedPost")},g=function(z){var s=document.getElementById(d.containerId),x=l(z.feed.entry),A=d.widgetStyle,c=d.widgetTitle+'<ul class="related style-'+A+'">',b=d.newTabLink?' target="_blank"':"",y='<!-- <div class="clear"/> -->',v,t,w,r,u;if(!s){return}for(var q=0;q<d.numPosts;q++){if(q==x.length){break}t=x[q].title.$t;w=(d.titleLength!=="auto"&&d.titleLength<t.length)?t.substring(0,d.titleLength)+"&hellip;":t; r=("media$thumbnail"in x[q]&&d.thumbnailSize!==false)?x[q].media$thumbnail.url.replace(/.*?:\/\//g , "//").replace(/\/s[0-9]+(\-c)?/, "/s"+d.thumbnailSize).replace(/\=s[0-9]+(\-c)?/, "=s"+d.thumbnailSize):d.noImage;u=("summary"in x[q]&&d.summaryLength>0)?x[q].summary.$t.replace(/<br ?\/?>/g," ").replace(/<.*?>/g,"").replace(/[<>]/g,"").substring(0,d.summaryLength)+"&hellip;":"";for(var p=0,a=x[q].link.length;p<a;p++){v=(x[q].link[p].rel=="alternate")?x[q].link[p].href:"#"} if(A==2){c+='<li><div class="item"><div class="itemThumbnail"><a aria-label="'+w+'" href="'+v+'"><div class="lazy" data-bg="//images.weserv.nl/?url='+r+'"></div></a></div><div class="itemTitle"><a href="'+v+'"><span>'+w+'</span></a></div></div></li>'} else{c+='<li><div class="item"><div class="itemThumbnail"><a aria-label="'+w+'" href="'+v+'"><div class="lazy" data-bg="//images.weserv.nl/?url='+r+'"></div></a></div><div class="itemTitle"><a href="'+v+'"><span>'+w+'</span></a></div></div></li>'} }s.innerHTML=c+="</ul>";d.callBack()};randomRelatedIndex=h;showRelatedPost=g;j(d.homePage.replace(/\/$/,"")+"/feeds/posts/summary"+e+"?alt=json-in-script&orderby=updated&max-results=0&callback=randomRelatedIndex")})(window,document,document.getElementsByTagName("head")[0]); /*]]>*/</script>
           </div>
         </div>
       </b:includable>
@@ -1508,7 +1473,7 @@ footer .toTop:before{content:'Top'}
       <b:includable id='post-authorProfile'>
         <div class='postAuthors'>
           <div class='authorImage'>
-            <div class='authorImg lazy' expr:data-bg='resizeImage(data:post.author.authorPhoto.image,80,&quot;1:1&quot;)'>
+            <div class='authorImg lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.author.authorPhoto.image,80,&quot;1:1&quot;)'>
             </div>
           </div>
           <div class='authorInfo'>
@@ -1551,9 +1516,9 @@ footer .toTop:before{content:'Top'}
         <b:if cond='data:widgets.Blog.first.allBylineItems.author and data:post.author.authorPhoto.image'>
           <div class='postAuthorImage'>
             <b:if cond='!data:view.isPost'>
-              <div class='authorImage lazy' expr:data-bg='resizeImage(data:post.author.authorPhoto.image,18,&quot;1:1&quot;)'/>
+              <div class='authorImage lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.author.authorPhoto.image,18,&quot;1:1&quot;)'/>
               <b:else/>
-              <div class='authorImage lazy' expr:data-bg='resizeImage(data:post.author.authorPhoto.image,38,&quot;1:1&quot;)'/>
+              <div class='authorImage lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.author.authorPhoto.image,38,&quot;1:1&quot;)'/>
             </b:if>
           </div>
         </b:if>
@@ -1562,9 +1527,9 @@ footer .toTop:before{content:'Top'}
         <b:if cond='data:widgets.Blog.first.allBylineItems.author'>
           <div class='authorName fn' expr:data-text='data:widgets.Blog.first.allBylineItems.author.label'>
             <b:if cond='data:post.author.profileUrl'>
-              <meta expr:content='data:post.author.profileUrl' property='author'/>
+              <!--<meta expr:content='data:post.author.profileUrl' property='author'/>
               <a expr:aria-label='data:post.author.name' expr:data-text='data:post.author.name' expr:href='data:post.author.profileUrl' rel='author noreferrer' target='_blank'/>
-              <b:else/>
+              <b:else/>-->
               <span expr:data-text='data:post.author.name'/>
             </b:if>
           </div>
@@ -1673,9 +1638,8 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
   </b:if>
 <!--[安全链接代码]-->
 <b:if cond='data:view.isPage'>
-  <script>/*<![CDATA[*/ var uri = window.location.toString(); if (uri.indexOf("%3D","%3D") > 0) { var clean_uri = uri.substring(0, uri.indexOf("%3D")); window.history.replaceState({}, document.title, clean_uri);} var uri = window.location.toString(); if (uri.indexOf("%3D%3D","%3D%3D") > 0) { var clean_uri = uri.substring(0, uri.indexOf("%3D%3D")); window.history.replaceState({}, document.title, clean_uri);} var uri = window.location.toString(); if (uri.indexOf("&m=1","&m=1") > 0) { var clean_uri = uri.substring(0, uri.indexOf("&m=1")); window.history.replaceState({}, document.title, clean_uri); } var uri = window.location.toString(); if (uri.indexOf("?m=1","?m=1") > 0) { var clean_uri = uri.substring(0, uri.indexOf("?m=1")); window.history.replaceState({}, document.title, clean_uri);}; var protocol=window.location.protocol.replace(/\:/g,''); if(protocol=='http'){ var url=window.location.href.replace('http','https'); window.location.replace(url);} /*]]>*/</script>
+  <script>/*<![CDATA[*/ var uri = window.location.toString(); if (uri.indexOf("?m=1","?m=1") > 0) {var clean_uri = uri.substring(0, uri.indexOf("?m=1"));window.history.replaceState({}, document.title, clean_uri); }; var protocol = window.location.protocol.replace(/\:/g,''); if(protocol == 'http'){ var url = window.location.href.replace('http','https'); window.location.replace(url);} /*]]>*/</script>
 </b:if>
-
   <!--[ </head> close ]-->
   &lt;!--<head/>
 
@@ -1718,7 +1682,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
           
               <!--[ Header widget ]-->
               <b:section id='header-widget' maxwidgets='1' showaddelement='false'>
-                <b:widget id='Header1' locked='true' title='科学上网New (标题)' type='Header' version='2' visible='true'>
+                <b:widget id='Header1' locked='true' title='科学上网 (标题)' type='Header' version='2' visible='true'>
                   <b:widget-settings>
                     <b:widget-setting name='displayUrl'/>
                     <b:widget-setting name='displayHeight'>0</b:widget-setting>
@@ -1771,7 +1735,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
               
               <!--[ Header Menu ]-->
               <b:tag class='headerMenu' cond='!data:view.isLayoutMode' name='div'>
-                <b:section id='header-menu' maxwidgets='2' showaddelement='false'>
+                <b:section id='header-menu' maxwidgets='3' showaddelement='false'>
                   <b:widget id='HTML000' locked='true' title='Header Menu' type='HTML' version='2' visible='true'>
                     <b:widget-settings>
                       <b:widget-setting name='content'><![CDATA[<!--[ Only editable via HTML template ]-->]]></b:widget-setting>
@@ -1793,129 +1757,107 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                       
                         <!--[ Standar menu ]-->
                         <!--[ 软路由 ]-->
-                        <li class='dropDown break'>
+                        <li>
                           <input class='dropMenu hidden' id='offdropMenu1' name='dropDown' type='checkbox'/>
                           <label class='link' for='offdropMenu1'>
                             <!--[ Icon ]-->
-                            <svg viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
+                            <svg viewBox='0 0 24 24'><path class='c-2' d='M103.87843,261.38171h-17.186a.996.996,0,0,1-.92114-1.39688,4.99751,4.99751,0,0,1,4.51414-2.85312h10a4.99744,4.99744,0,0,1,4.51414,2.85314A.996.996,0,0,1,103.87843,261.38171Z' transform='translate(-83.28544 -252.68516)'/><path class='c-2' d='M105.28544,263.43516v6.25a5,5,0,0,1-5,5h-10a5,5,0,0,1-5-5v-6.25a1,1,0,0,1,1-1h18A1,1,0,0,1,105.28544,263.43516Z' transform='translate(-83.28544 -252.68516)'/><path class='c-1' d='M99.52653,259.57827a.769.769,0,0,1-.76881-.7688V255.454a.76881.76881,0,0,1,1.53761,0v3.35551A.769.769,0,0,1,99.52653,259.57827Z' transform='translate(-83.28544 -252.68516)'/><path class='c-1' d='M91.04435,259.57827a.769.769,0,0,1-.7688-.7688V255.454a.7688.7688,0,0,1,1.5376,0v3.35551A.769.769,0,0,1,91.04435,259.57827Z' transform='translate(-83.28544 -252.68516)'/></svg>                          
                             <!--[ Title navigation ]-->
-                            <span class='name'>软路由</span>
+                            <span class='name'>软路由</span>                          
                             <svg class='line drop' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg>
                           </label>
                           <ul>
                             <!--[ Change attribute href='#' to add url ]-->
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/OpenWrt&quot;' itemprop='url'>OpenWrt</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/iKuai&quot;' itemprop='url'>iKuai</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/RouterOS&quot;' itemprop='url'>RouterOS</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/软路由固件' itemprop='url'>软路由固件</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/软路由教程' itemprop='url'>软路由教程</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/软路由硬件' itemprop='url'>软路由硬件</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/软路由' itemprop='url'>更多</a></li>
                           </ul>
                         </li>
 						<!--[ 服务器 ]-->
-						<li>
-                          <!--[ Change attribute href='#' to add url ]-->
-                          <a class='link' expr:href='data:blog.homepageUrl + &quot;search/label/服务器&quot;' itemprop='url'>
-                            <!--[ Icon ]-->
-                            <svg style='height:18px' viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
-                          
-                            <!--[ Title navigation ]-->
-                            <span class='name' itemprop='name'>服务器</span>
-                          </a>
-                        </li>
-						<!--[ 客户端 ]-->
-                        <li class='dropDown break'>
+                        <li>
                           <input class='dropMenu hidden' id='offdropMenu2' name='dropDown' type='checkbox'/>
                           <label class='link' for='offdropMenu2'>
-                            <!--[ Icon ]-->
-                            <svg viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
-                            <!--[ Title navigation ]-->
-                            <span class='name'>客户端</span>
+                            <svg viewBox='0 0 24 24'><path class='c-1' d='M96.97941,272.82723H93.58977a.75.75,0,1,1,0-1.5h3.38964a.75.75,0,1,1,0,1.5Z' transform='translate(-83.28433 -252.70411)'/><rect class='c-2' height='20' rx='5' transform='translate(275.081 -84.90745) rotate(90)' width='13' x='88.78433' y='253.081'/></svg>
+                            <span class='name'>服务器</span>                          
                             <svg class='line drop' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg>
                           </label>
                           <ul>
-                            <!--[ Change attribute href='#' to add url ]-->
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/Xray客户端&quot;' itemprop='url'>Xray客户端</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/Clash客户端&quot;' itemprop='url'>Clash客户端</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/V2ray客户端&quot;' itemprop='url'>V2ray客户端</a></li>
-							<li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/Trojan客户端&quot;' itemprop='url'>Trojan客户端</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/SSR客户端&quot;' itemprop='url'>SSR客户端</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/SSH登录客户端&quot;' itemprop='url'>SSH登录客户端</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/ESXi' itemprop='url'>ESXi</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/ProxmoxVE' itemprop='url'>Proxmox VE</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/NAS' itemprop='url'>NAS</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/VPS' itemprop='url'>VPS</a></li>
+							<li itemprop='name'><a href='https://www.iyio.net/search/label/服务器' itemprop='url'>全部内容</a></li>
+                          </ul>
+                        </li>
+						<!--[ 科学上网 ]-->
+                        <li class='dropDown break'>
+                          <input class='dropMenu hidden' id='offdropMenu3' name='dropDown' type='checkbox'/>
+                          <label class='link' for='offdropMenu3'>
+                            <svg viewBox='0 0 24 24'><path class='c-2' d='M91.96077,266.79785a3.68569,3.68569,0,0,0-2.8751-1.47392.34019.34019,0,0,0-.1-.01,3.705,3.705,0,0,0,0,7.41l.00407-.00264h11.011l.00494.00264a5.283,5.283,0,0,0,.83-10.5,6.14715,6.14715,0,1,0-11.75,3.1' transform='translate(-83.28567 -252.72393)'/><path class='c-1' d='M100.42453,270.2919a.5.5,0,0,1,0-1,1.7417,1.7417,0,1,0,0-3.48339.5.5,0,0,1,0-1,2.7417,2.7417,0,1,1,0,5.48339Z' transform='translate(-83.28567 -252.72393)'/></svg>
+                            <span class='name'>科学上网</span>                          
+                            <svg class='line drop' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg>
+                          </label>
+                          <ul>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/客户端' itemprop='url'>客户端</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/VPN推荐' itemprop='url'>VPN推荐</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/协议搭建' itemprop='url'>协议搭建</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/科学上网' itemprop='url'>综合教程</a></li>
                           </ul>
                         </li>
 						<!--[ 免费节点 ]-->
                         <li class='break'>
-                          <!--[ Change attribute href='#' to add url ]-->
-                          <a class='link' expr:href='data:blog.homepageUrl + &quot;search/label/免费节点&quot;' itemprop='url'>
-                            <!--[ Icon ]-->
-                            <svg viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
-                          
-                            <!--[ Title navigation ]-->
+                          <a class='link' href='https://www.iyio.net/search/label/免费节点' itemprop='url'>
+                            <svg viewBox='0 0 24 24'><path class='c-1' d='M97.12279,268.37336c-.13228,0-.26368-.00488-.39685-.0142a5.51876,5.51876,0,0,1-2.23638-.65787,5.44391,5.44391,0,0,1-1.7614-1.52879.90938.90938,0,0,1,1.45777-1.08756,3.6387,3.6387,0,0,0,1.17546,1.021,3.66232,3.66232,0,0,0,4.34668-.625l2.74243-2.74554a3.66718,3.66718,0,0,0-2.61369-6.20353,3.76424,3.76424,0,0,0-2.57641,1.029l-1.56254,1.55543a.9087.9087,0,1,1-1.282-1.2882l1.5723-1.5652a5.56106,5.56106,0,0,1,3.86461-1.54922,5.48573,5.48573,0,0,1,3.89479,9.29531l-2.754,2.75663a5.47822,5.47822,0,0,1-3.87082,1.60781Z' transform='translate(-83.28591 -252.71361)'/><path class='c-2' d='M90.76789,274.71361h-.04972a5.48607,5.48607,0,0,1-3.89479-9.29486l2.75485-2.75707a5.47484,5.47484,0,0,1,6.50317-.93575,5.52467,5.52467,0,0,1,1.76229,1.5288.90938.90938,0,0,1-1.45778,1.08756,3.67939,3.67939,0,0,0-1.17634-1.021,3.63292,3.63292,0,0,0-1.49417-.43946,3.6929,3.6929,0,0,0-1.54123.22195,3.638,3.638,0,0,0-1.30951.843l-2.7442,2.746a3.667,3.667,0,0,0,2.61369,6.20264,3.795,3.795,0,0,0,2.57552-1.02852l1.55277-1.5541a.9087.9087,0,1,1,1.28554,1.28465l-1.56342,1.5652A5.45087,5.45087,0,0,1,90.76789,274.71361Z' transform='translate(-83.28591 -252.71361)'/></svg>                          
                             <span class='name new' itemprop='name'>免费节点分享</span>
                           </a>
                         </li>
 						<!--[ 软件&脚本 ]-->
-                        <li class='dropDown break'>
-                          <input class='dropMenu hidden' id='offdropMenu3' name='dropDown' type='checkbox'/>
-                          <label class='link' for='offdropMenu3'>
-                            <!--[ Icon ]-->
-                            <svg viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
-                            <!--[ Title navigation ]-->
-                            <span class='name'>脚本及教程</span>
+                        <li>
+                          <input class='dropMenu hidden' id='offdropMenu4' name='dropDown' type='checkbox'/>
+                          <label class='link' for='offdropMenu4'>
+                            <svg viewBox='0 0 24 24'><path class='c-1' d='M98.07978,256.22151a1.53185,1.53185,0,0,1-1.528,1.528H94.00852a1.52291,1.52291,0,1,1,0-3.0458h2.54326A1.52973,1.52973,0,0,1,98.07978,256.22151Z' transform='translate(-83.28502 -252.70371)'/><path class='c-2' d='M103.48913,261.372v8.20412a5.12943,5.12943,0,0,1-5.12757,5.12757H92.20848a5.12943,5.12943,0,0,1-5.12757-5.12757V261.372a5.108,5.108,0,0,1,4.38923-5.05577,2.55364,2.55364,0,0,0,2.54325,2.46126h2.54326a2.56058,2.56058,0,0,0,2.54325-2.46126A5.11694,5.11694,0,0,1,103.48913,261.372Z' transform='translate(-83.28502 -252.70371)'/><path class='c-1' d='M98.49276,269.31931a.76808.76808,0,0,1-.76914.76913H92.8319a.76914.76914,0,1,1,0-1.53827h4.89172A.76169.76169,0,0,1,98.49276,269.31931Z' transform='translate(-83.28502 -252.70371)'/><path class='c-1' d='M100.15408,265.70954a.76812.76812,0,0,1-.76913.76914H91.18084a.76914.76914,0,1,1,0-1.53827H99.385A.77473.77473,0,0,1,100.15408,265.70954Z' transform='translate(-83.28502 -252.70371)'/></svg>
+                            <span class='name'>脚本及教程</span>                          
                             <svg class='line drop' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg>
                           </label>
                           <ul>
-                            <!--[ Change attribute href='#' to add url ]-->
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/脚本及教程&quot;' itemprop='url'>所有脚本及教程</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/Xray脚本及教程&quot;' itemprop='url'>Xray脚本及教程</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/V2ray脚本及教程&quot;' itemprop='url'>V2ray脚本及教程</a></li>
-							<li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/Trojan脚本及教程&quot;' itemprop='url'>Trojan脚本及教程</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/BBR加速脚本&quot;' itemprop='url'>BBR加速脚本</a></li>
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/VPS测速脚本&quot;' itemprop='url'>VPS测速脚本</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/脚本及教程' itemprop='url'>所有脚本及教程</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/一键脚本' itemprop='url'>一键脚本</a></li>
+							<li itemprop='name'><a href='https://www.iyio.net/search/label/综合教程' itemprop='url'>综合教程</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/BBR加速脚本' itemprop='url'>BBR加速脚本</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/VPS测速脚本' itemprop='url'>VPS测速脚本</a></li>
                           </ul>
                         </li>
 						<!--[ 分享推荐 ]-->
-                        <li class='break'>
-                          <!--[ Change attribute href='#' to add url ]-->
-                          <a class='link' expr:href='data:blog.homepageUrl + &quot;search/label/分享推荐&quot;' itemprop='url'>
-                            <!--[ Icon ]-->
-                            <svg viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
-                          
-                            <!--[ 分享推荐 ]-->
+                        <li class='dropDown break'>
+                          <a class='link' href='https://www.iyio.net/search/label/分享推荐' itemprop='url'>
+                            <svg viewBox='0 0 24 24'><circle class='c-2' cx='18.48892' cy='5.49436' r='3.51099'/><circle class='c-2' cx='18.48892' cy='18.50564' r='3.51099'/><path class='c-1' d='M91.97533,263.8701a.74989.74989,0,0,1-.33593-1.4209l3.87988-1.93994a.74987.74987,0,1,1,.66992,1.3418L92.30932,263.791A.7453.7453,0,0,1,91.97533,263.8701Z' transform='translate(-83.32413 -252.70427)'/><path class='c-1' d='M95.85326,268.95018a.74529.74529,0,0,1-.334-.0791l-3.87988-1.93994a.74987.74987,0,1,1,.66992-1.3418l3.87988,1.93994a.74989.74989,0,0,1-.33594,1.4209Z' transform='translate(-83.32413 -252.70427)'/><path class='c-2' d='M92.34424,264.69029a3.42745,3.42745,0,0,1-.37,1.57,3.51,3.51,0,1,1,0-3.14A3.42751,3.42751,0,0,1,92.34424,264.69029Z' transform='translate(-83.32413 -252.70427)'/></svg>                          
                             <span class='name' itemprop='name'>分享推荐</span>
                           </a>
-                        </li>
-						<!--[ Dropdown style 1 with checked atribut ]-->
-                        <li class='dropDown break'>
-                          <input class='dropMenu hidden' id='offdropMenu4' name='dropDown' type='checkbox'/>
-                          <label class='link' for='offdropMenu4'>
-                            <!--[ Icon ]-->
+                        </li>						
+						<!--[ 更多 ]-->
+                        <li>
+                          <input class='dropMenu hidden' id='offdropMenu5' name='dropDown' type='checkbox'/>
+                          <label class='link' for='offdropMenu5'>
                             <svg viewBox='0 0 24 24'><path class='c-2' d='M105.28784,265.3372v2.37a5.00181,5.00181,0,0,1-5,5h-10a5.00185,5.00185,0,0,1-5-5v-6a5.00185,5.00185,0,0,1,5-5h.48a3.9739,3.9739,0,0,1,3.34,1.81,3.97247,3.97247,0,0,0,3.34,1.82h2.84A5.00181,5.00181,0,0,1,105.28784,265.3372Z' opacity='0.4' transform='translate(-83.28784 -252.7072)'/><path class='c-1' d='M98.7535,267.7072a.75542.75542,0,0,1-.75.75H92.56355a.75.75,0,0,1,0-1.5H98.0035A.75546.75546,0,0,1,98.7535,267.7072Z' transform='translate(-83.28784 -252.7072)'/></svg>
-                          
-                            <!--[ 更多 ]-->
-                            <span class='name'>更多...</span>
+                            <span class='name'>更多</span>
                           
                             <svg class='line drop' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg>
                           </label>
                           <ul>
-                            <!--[ Change attribute href='#' to add url ]-->
-                            <li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/常见问题&quot;' itemprop='url'>常见问题</a></li>
-							<li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/固件推荐&quot;' itemprop='url'>固件推荐</a></li>
-							<li itemprop='name'><a expr:href='data:blog.homepageUrl + &quot;search/label/知识科普&quot;' itemprop='url'>知识科普</a></li>
-                            <li itemprop='name'><a href='https://www.iyio.net/p/contact.html' itemprop='url'>广告合作</a></li>
                             <li itemprop='name'><a href='https://www.iyio.net/p/nav.html' itemprop='url'>网址导航</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/search/label/知识科普' itemprop='url'>知识科普</a></li>
+                            <li itemprop='name'><a href='https://www.iyio.net/p/faq.html' itemprop='url'>常见问题</a></li>
                             <li itemprop='name'><a href='https://www.iyio.net/p/links.html' itemprop='url'>友情链接</a></li>
                           </ul>
                         </li>
-						
                       </ul>
                     
                     </b:includable>
                   </b:widget>
                   <b:widget id='LinkList0' locked='true' title='Header Menu (Simple)' type='LinkList' version='2' visible='false'>
                     <b:widget-settings>
-                      <b:widget-setting name='text-8'>VPN</b:widget-setting>
-                      <b:widget-setting name='link-7'>https://www.iyio.net/search/label/VPS</b:widget-setting>
-                      <b:widget-setting name='link-8'>https://www.iyio.net/search/label/VPN</b:widget-setting>
                       <b:widget-setting name='link-5'>#</b:widget-setting>
-                      <b:widget-setting name='link-6'>https://www.iyio.net/search/label/RouterOS(ROS)</b:widget-setting>
                       <b:widget-setting name='link-3'>#</b:widget-setting>
                       <b:widget-setting name='link-4'>#</b:widget-setting>
                       <b:widget-setting name='text-1'>Contact</b:widget-setting>
@@ -1924,8 +1866,6 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                       <b:widget-setting name='text-2'>Download</b:widget-setting>
                       <b:widget-setting name='text-5'>Privacy</b:widget-setting>
                       <b:widget-setting name='text-4'>Disclaimer</b:widget-setting>
-                      <b:widget-setting name='text-7'>VPS</b:widget-setting>
-                      <b:widget-setting name='text-6'>RouterOS(ROS)</b:widget-setting>
                       <b:widget-setting name='sorting'>NONE</b:widget-setting>
                       <b:widget-setting name='link-1'>#</b:widget-setting>
                       <b:widget-setting name='link-2'>#</b:widget-setting>
@@ -2174,29 +2114,31 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
           <b:section class='sectionInner' cond='!data:view.isPage' id='nav-menu' maxwidgets='1' showaddelement='no'>
             <b:widget id='LinkList00' locked='true' title='Link Menu (Manual)' type='LinkList' version='2' visible='true'>
               <b:widget-settings>
+                <b:widget-setting name='text-10'>VPS</b:widget-setting>
+                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                <b:widget-setting name='link-1'>https://www.iyio.net/search/label/OpenWrt</b:widget-setting>
+                <b:widget-setting name='link-2'>https://www.iyio.net/search/label/iKuai</b:widget-setting>
+                <b:widget-setting name='link-0'>https://www.iyio.net/search/label/ESXi</b:widget-setting>
+                <b:widget-setting name='link-11'>https://www.iyio.net</b:widget-setting>
+                <b:widget-setting name='link-10'>https://www.iyio.net/search/label/VPS</b:widget-setting>
                 <b:widget-setting name='text-9'>VPN</b:widget-setting>
                 <b:widget-setting name='link-9'>https://www.iyio.net/search/label/VPN</b:widget-setting>
-                <b:widget-setting name='text-8'>VPS</b:widget-setting>
-                <b:widget-setting name='link-7'>https://www.iyio.net/search/label/RouterOS</b:widget-setting>
-                <b:widget-setting name='link-8'>https://www.iyio.net/search/label/VPS</b:widget-setting>
-                <b:widget-setting name='text-10'>IYIO</b:widget-setting>
-                <b:widget-setting name='link-5'>https://www.iyio.net/search/label/OpenWrt</b:widget-setting>
-                <b:widget-setting name='link-6'>https://www.iyio.net/search/label/iKuai</b:widget-setting>
-                <b:widget-setting name='link-3'>https://www.iyio.net/search/label/Trojan</b:widget-setting>
-                <b:widget-setting name='link-4'>https://www.iyio.net/search/label/SSR</b:widget-setting>
-                <b:widget-setting name='text-1'>V2Ray</b:widget-setting>
-                <b:widget-setting name='text-0'>Xray</b:widget-setting>
-                <b:widget-setting name='text-3'>Trojan-Go</b:widget-setting>
-                <b:widget-setting name='text-2'>Clash</b:widget-setting>
-                <b:widget-setting name='text-5'>OpenWrt</b:widget-setting>
-                <b:widget-setting name='text-4'>SSR</b:widget-setting>
-                <b:widget-setting name='text-7'>RouterOS(ROS)</b:widget-setting>
-                <b:widget-setting name='text-6'>iKuai</b:widget-setting>
-                <b:widget-setting name='sorting'>NONE</b:widget-setting>
-                <b:widget-setting name='link-1'>https://www.iyio.net/search/label/V2Ray</b:widget-setting>
-                <b:widget-setting name='link-2'>https://www.iyio.net/search/label/Clash</b:widget-setting>
-                <b:widget-setting name='link-0'>https://www.iyio.net/search/label/Xray</b:widget-setting>
-                <b:widget-setting name='link-10'>https://www.iyio.net</b:widget-setting>
+                <b:widget-setting name='text-8'>SSR</b:widget-setting>
+                <b:widget-setting name='link-7'>https://www.iyio.net/search/label/Clash</b:widget-setting>
+                <b:widget-setting name='link-8'>https://www.iyio.net/search/label/SSR</b:widget-setting>
+                <b:widget-setting name='link-5'>https://www.iyio.net/search/label/Xray</b:widget-setting>
+                <b:widget-setting name='link-6'>https://www.iyio.net/search/label/V2Ray</b:widget-setting>
+                <b:widget-setting name='link-3'>https://www.iyio.net/search/label/NAS</b:widget-setting>
+                <b:widget-setting name='link-4'>https://www.iyio.net/search/label/ProxmoxVE</b:widget-setting>
+                <b:widget-setting name='text-1'>OpenWrt</b:widget-setting>
+                <b:widget-setting name='text-0'>ESXi</b:widget-setting>
+                <b:widget-setting name='text-3'>NAS</b:widget-setting>
+                <b:widget-setting name='text-2'>iKuai</b:widget-setting>
+                <b:widget-setting name='text-5'>Xray</b:widget-setting>
+                <b:widget-setting name='text-4'>Proxmox VE</b:widget-setting>
+                <b:widget-setting name='text-7'>Clash</b:widget-setting>
+                <b:widget-setting name='text-6'>V2Ray</b:widget-setting>
+                <b:widget-setting name='text-11'>IYIO</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <b:include name='content'/>
@@ -2308,9 +2250,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='postShareButtons'/>
                 <b:includable id='postTimestamp'>
                   <b:if cond='data:post.lastUpdated != data:post.date'>
-                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;YYYY.MM.d&quot;'/>
                     <b:else/>
-                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;YYYY.MM.d&quot;'/>
                   </b:if>
                 </b:includable>
                 <b:includable id='sharingButton'/>
@@ -2349,7 +2291,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='snippetedPostThumbnail'>
                   <div class='itemThumbnail'>
                     <a expr:href='data:post.url.canonical'>
-                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                     </a>
                   </div>
                 </b:includable>
@@ -2447,11 +2389,11 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   </div>
                 </b:includable>
               </b:widget>
-              <b:widget cond='data:view.isHomepage' id='FeaturedPost00' locked='true' title='Pinned Post' type='FeaturedPost' version='2' visible='true'>
+              <b:widget cond='data:view.isHomepage' id='FeaturedPost00' locked='true' title='推荐' type='FeaturedPost' version='2' visible='true'>
                 <b:widget-settings>
                   <b:widget-setting name='showSnippet'>true</b:widget-setting>
                   <b:widget-setting name='showPostTitle'>true</b:widget-setting>
-                  <b:widget-setting name='postId'>5627040990898709921</b:widget-setting>
+                  <b:widget-setting name='postId'>4453536829019997033</b:widget-setting>
                   <b:widget-setting name='showFirstImage'>true</b:widget-setting>
                   <b:widget-setting name='useMostRecentPost'>false</b:widget-setting>
                 </b:widget-settings>
@@ -2496,9 +2438,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='postShareButtons'/>
                 <b:includable id='postTimestamp'>
                   <b:if cond='data:post.lastUpdated != data:post.date'>
-                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;YYYY.MM.d&quot;'/>
                     <b:else/>
-                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;YYYY.MM.d&quot;'/>
                   </b:if>
                 </b:includable>
                 <b:includable id='sharingButton'/>
@@ -2534,7 +2476,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='snippetedPostThumbnail'>
                   <div class='itemThumbnail'>
                     <a expr:href='data:post.url.canonical'>
-                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage, 600, &quot;18:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;18:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                     </a>
                   </div>
                 </b:includable>
@@ -2558,12 +2500,12 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:widget-settings>
                   <b:widget-setting name='commentLabel'>Comment</b:widget-setting>
                   <b:widget-setting name='showShareButtons'>true</b:widget-setting>
-                  <b:widget-setting name='authorLabel'>Oleh</b:widget-setting>
+                  <b:widget-setting name='authorLabel'>作者&#65306;</b:widget-setting>
                   <b:widget-setting name='disableGooglePlusShare'>true</b:widget-setting>
                   <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
                   <b:widget-setting name='timestampLabel'>On</b:widget-setting>
                   <b:widget-setting name='reactionsLabel'/>
-                  <b:widget-setting name='showAuthorProfile'>true</b:widget-setting>
+                  <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
                   <b:widget-setting name='style.layout'>1x1</b:widget-setting>
                   <b:widget-setting name='showLocation'>false</b:widget-setting>
                   <b:widget-setting name='showTimestamp'>true</b:widget-setting>
@@ -2600,12 +2542,12 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                             
                         <b:loop index='i' values='data:posts' var='post'>
                           <!--[ Remove comment tag below to enable in-feed ad ]-->
-                          <!--<b:if cond='data:i == 2'>
+                          <b:if cond='data:i == 2'>
                             <b:include name='post-adIn'/>                                
                           </b:if>
                           <b:if cond='data:i == 5'>
                             <b:include name='post-adIn'/>                                
-                          </b:if>-->
+                          </b:if>
                           <b:include data='post' name='postCommentsAndAd'/>
                         </b:loop>
                           
@@ -2662,7 +2604,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='commentblock' var='cb'>
                   <div class='commentAvatar'>
                     <b:if cond='data:cb.level.authorAvatarSrc'>
-                      <div class='lazy' expr:data-bg='resizeImage(data:cb.level.authorAvatarSrc, 100, &quot;1:1&quot;)'/>
+                      <div class='lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:cb.level.authorAvatarSrc, 100, &quot;1:1&quot;)'/>
                     </b:if>
                   </div>
                   
@@ -2771,7 +2713,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                       <!--[ Post thumbnail ]-->
                       <div class='postThumbnail'>
                         <a expr:href='data:post.url'>
-                          <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage, 600, &quot;18:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                          <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;18:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                         </a>
                       </div>
                     </b:if>
@@ -2835,7 +2777,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                       
                         <b:include data='post' name='postMetadataJSON'/>
                         <b:if cond='data:view.isPost and data:post.labels none (label =&gt; label.name in [&quot;Sponsored&quot; , &quot;Advertorial&quot;])'>
-                          <script>/*<![CDATA[*/ function get_text(el) {ret = ""; var length = el.childNodes.length; for(var i = 0; i < length; i++) {var node = el.childNodes[i]; if(node.nodeType != 8) {ret += node.nodeType != 1 ? node.nodeValue : get_text(node);} } return ret;} var words = get_text(document.getElementById('postBody')); var count = words.split(' ').length; var avg = 200; var counted = count / avg; var maincount = Math.round(counted); document.getElementById("readTime").innerHTML = "预计阅读时间 " + maincount + " 分钟"; /*]]>*/</script>
+                          <script>/*<![CDATA[*/ function get_text(el) {ret = ""; var length = el.childNodes.length; for(var i = 0; i < length; i++) {var node = el.childNodes[i]; if(node.nodeType != 8) {ret += node.nodeType != 1 ? node.nodeValue : get_text(node);} } return ret;} var words = get_text(document.getElementById('postBody')); var count = words.split(' ').length; var avg = 200; var counted = count / avg; var maincount = Math.round(counted); document.getElementById("readTime").innerHTML ="预计阅读时长" + maincount + " 分钟"; /*]]>*/</script>
                         </b:if>
                       </b:tag>
                     </b:tag>
@@ -2932,7 +2874,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                           <li class='sharePreview'>
                             <div class='preview'>
                               <b:if cond='data:post.featuredImage'>
-                                <div class='previewImg lazy' expr:data-bg='resizeImage(data:post.featuredImage, 120, &quot;1:1&quot;)'/>
+                                <div class='previewImg lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 120, &quot;1:1&quot;)'/>
                               </b:if>
                               <div class='previewContent'>
                                 <div class='previewTitle' expr:data-text='data:post.title'/>
@@ -3032,7 +2974,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                     &quot;height&quot;: 720,
                     &quot;width&quot;: 1200
                     <b:else/>
-                    &quot;url&quot;: &quot;https://1.bp.blogspot.com/-E250bQMM8tk/XomH5DdorOI/AAAAAAAAPY8/SCYwi79WjckWC8wHKK7OblI82BpT9JquACNcBGAsYHQ/s1600/jagotheme-img.png&quot;,
+                    &quot;url&quot;: &quot;https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/a/AVvXsEjFNPGvIacUPYJXi5cx8RsQlk4UkDfhNbWBpYPYhUMlFwhfo2wf5CdiB5nZwHSF2K42h_X2opQER_0PU68IwJrHlerpgNky_rjbSEVnZSF5eyZ2ytZ8tuO7GZaUbSo6rCZbX2I6jcmnn8rplXJoZbNzOqQg_f-QboOt5sIJwoTR04vZpEWGi5Kqntq2xw&quot;,
                     &quot;height&quot;: 720,
                     &quot;width&quot;: 1280
                     </b:if>
@@ -3044,7 +2986,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                     &quot;name&quot;: &quot;Jago Desain&quot;,
                     &quot;logo&quot;: {
                       &quot;@type&quot;: &quot;ImageObject&quot;,
-                      &quot;url&quot;: &quot;https://1.bp.blogspot.com/-50s1RMWV7jI/X8OaYjJcMiI/AAAAAAAAQK4/sWcpbaP0Sq0hsW473Vnb8AyBvYvdSQEPwCNcBGAsYHQ/s0/jd-logo.png&quot;,
+                      &quot;url&quot;: &quot;https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/a/AVvXsEjKGYhgCG4xDxPYmkdKQdiFSngkV2hvThkg091eXIS4zQlNvkfAd_cn8Jc-3pptnB30OvF1B21BSPtF6rG5NmIa0yITRPVBMMdhfLf5XcUrw8IWTYsGzZVloB7iKu9XZ-s5YdL_AGhFItLpAAw2GpSyw7qLOwOQHb2-GiusKJuwMCISJOiWPwOYsXxDhg&quot;,
                       &quot;width&quot;: 297,
                       &quot;height&quot;: 45
                     }
@@ -3080,9 +3022,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='postShareButtons'/>
                 <b:includable id='postTimestamp'>
                   <b:if cond='data:post.lastUpdated != data:post.date'>
-                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;YYYY.MM.d&quot;'/>
                     <b:else/>
-                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;YYYY.MM.d&quot;'/>
                   </b:if>
                 </b:includable>
                 <b:includable id='postTitle' var='post'/>
@@ -3149,7 +3091,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                                       <div class='commentThread' expr:id='&quot;c&quot; + data:commentLevel1.id + &quot;-rt&quot;'>
                                         <label class='threadToggle' expr:for='&quot;off-&quot; + data:commentLevel1.id'>
                                           <svg class='threadArrow line' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9'/></svg>
-                                          <span class='threadCount' data-text='Response'/>
+                                          <span class='threadCount' data-text='回复'/>
                                         </label>
                                     
                                         <ul class='threadChrome'>
@@ -3167,7 +3109,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                                         <div class='commentReply'>
                                           <a aria-label='Reply' class='replyTo' expr:data-reply-to='data:commentLevel1.id' href='javascript:;' role='button' target='_self'>
                                             <svg class='line' viewBox='0 0 24 24'><polyline points='15 14 20 9 15 4'/><path d='M4 20v-7a4 4 0 0 1 4-4h12'/></svg>
-                                            <span data-text='Reply'/>
+                                            <span data-text='回复'/>
                                           </a>
                                         </div>
                                       </b:if>
@@ -3179,7 +3121,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                                   <div class='commentActions'>
                                     <a aria-label='Reply' class='replyTo' expr:data-reply-to='data:commentLevel1.id' href='javascript:;' role='button' target='_self'>
                                       <svg class='line' viewBox='0 0 24 24'><polyline points='15 14 20 9 15 4'/><path d='M4 20v-7a4 4 0 0 1 4-4h12'/></svg>
-                                      <span data-text='Reply'/>
+                                      <span data-text='回复'/>
                                     </a>
                                   </div>
                                 </b:if>
@@ -3281,28 +3223,10 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
             </b:section>
           </main>
           
-          <b:if cond='data:view.isHomepage'>
-            <!--[ Left Column ]-->
-            <div class='leftbar'>
-              <b:section cond='data:view.isHomepage' id='left-widget' showaddelement='true'>
-                <b:widget cond='!data:view.isPreview' id='HTML0000' locked='false' title='Left Ads' type='HTML' version='2' visible='true'>
-                  <b:widget-settings>
-                    <b:widget-setting name='content'><![CDATA[<div class='adsHere ads-here' style='min-height:400px'></div>]]></b:widget-setting>
-                  </b:widget-settings>
-                  <b:includable id='main'>
-                    <div class='widget-content'>
-                      <data:content/>
-                    </div>
-                  </b:includable>
-                </b:widget>
-              </b:section>
-            </div>
-          </b:if>
-          
           <!--[ Sidebar content ]-->
           <b:tag class='sidebar' cond='data:view.isHomepage or data:view.isPost' name='aside'>
             <b:section cond='data:view.isHomepage or data:view.isPost' id='side-widget' showaddelement='true'>
-              <b:widget cond='data:view.isHomepage' id='Profile00' locked='false' title='Author profile' type='Profile' version='2' visible='true'>
+              <b:widget cond='data:view.isHomepage' id='Profile00' locked='false' title='About Me' type='Profile' version='2' visible='true'>
                 <b:widget-settings>
                   <b:widget-setting name='showaboutme'>true</b:widget-setting>
                   <b:widget-setting name='showlocation'>true</b:widget-setting>
@@ -3312,7 +3236,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   <b:include name='content'/>
                 </b:includable>
                 <b:includable id='authorProfileImage'>
-                  <div class='profileImg lazy' expr:data-bg='data:authorPhoto.image'/>
+                  <div class='profileImg lazy' expr:data-bg='&quot;https://images.weserv.nl/?url=&quot; + data:authorPhoto.image'/>
                 </b:includable>
                 <b:includable id='content'>
                   <b:if cond='data:team'>
@@ -3485,9 +3409,24 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 </b:includable>
                 <b:includable id='viewProfileLink'/>
               </b:widget>
-              <b:widget cond='data:view.isHomepage or data:view.isPost' id='PopularPosts00' locked='false' title='Popular post' type='PopularPosts' version='2' visible='true'>
+              <b:widget id='HTML2' locked='false' title='' type='HTML' visible='true'>
                 <b:widget-settings>
-                  <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+                  <b:widget-setting name='content'>&lt;div class=&#39;adsHere ads-here&#39;&gt;
+&lt;a href=&quot;https://i.ok8.icu/961&quot; target=&quot;_blank&quot;&gt;
+&lt;img alt=&quot;速蛙云&quot; height=&quot;200&quot;  src=&quot;https://images.weserv.nl/?url=https://blogger.googleusercontent.com/img/a/AVvXsEiwAaR6xlI-wve8MlL1mvCbIFEkxYU0zM1WeNsH5sVz_WFV3CYQAdzNR7NQ9mkPxXviPBmChi3msGLwXmineDK4olmr8E-BF2RYb6r9eVnB0LqFPycQufcJRKCbt98htBmgrXmlWB-KOppsdpIO_pT8qjYIyaIZeJhq9sNvUv2qEOIKPYiPZWhsODkz&quot; width=&quot;320&quot; /&gt;
+&lt;/a&gt;
+&lt;/div&gt;</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+</b:includable>
+              </b:widget>
+              <b:widget cond='data:view.isHomepage or data:view.isPost' id='PopularPosts00' locked='false' title='热门文章' type='PopularPosts' version='2' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
                   <b:widget-setting name='showThumbnails'>true</b:widget-setting>
                   <b:widget-setting name='showSnippets'>true</b:widget-setting>
                   <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
@@ -3496,7 +3435,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   <b:if cond='data:title != &quot;&quot;'>
                     <h2 class='title'><data:title/></h2>
                   </b:if>
-                  <b:include name='snippetedPosts'/>
+                  <div class='widget-content'>
+                    <b:include name='snippetedPosts'/>
+                  </div>
                 </b:includable>
                 <b:includable id='blogThisShare'/>
                 <b:includable id='bylineByName' var='byline'/>
@@ -3533,9 +3474,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='postShareButtons'/>
                 <b:includable id='postTimestamp'>
                   <b:if cond='data:post.lastUpdated != data:post.date'>
-                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp updated' expr:data-text='format(data:post.lastUpdated, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.lastUpdated.iso8601' expr:title='&quot;Last updated: &quot; + data:post.lastUpdated format &quot;YYYY.MM.d&quot;'/>
                     <b:else/>
-                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;MMMM d, YYYY&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;MMMM d, YYYY&quot;'/>
+                    <time class='postTimestamp published' expr:data-text='format(data:post.date, &quot;YYYY.MM.d&quot;)' expr:datetime='data:post.date.iso8601' expr:title='&quot;Published: &quot; + data:post.date format &quot;YYYY.MM.d&quot;'/>
                   </b:if>
                 </b:includable>
                 <b:includable id='sharingButton'/>
@@ -3574,7 +3515,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 <b:includable id='snippetedPostThumbnail'>
                   <div class='itemThumbnail'>
                     <a expr:href='data:post.url.canonical'>
-                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
+                      <img class='imgThumb lazy' expr:alt='data:post.title' expr:data-src='&quot;https://images.weserv.nl/?url=&quot; + resizeImage(data:post.featuredImage, 600, &quot;20:9&quot;)' src='data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='/>
                     </a>
                   </div>
                 </b:includable>
@@ -3595,7 +3536,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   </div>
                 </b:includable>
               </b:widget>
-              <b:widget id='Label00' locked='false' title='Labels' type='Label' version='2' visible='true'>
+              <b:widget id='Label00' locked='false' title='标签云' type='Label' version='2' visible='true'>
                 <b:widget-settings>
                   <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
                   <b:widget-setting name='display'>CLOUD</b:widget-setting>
@@ -3757,7 +3698,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
       &lt;h3&gt;IYIO.NET&lt;/h3&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;p class=&#39;aboutDesc&#39;&gt;坚持Internet自身的自由开放精神&#65292; 提倡自由&#12289;平等&#12289;开放&#12289;健康 &#65281;&lt;/p&gt;
+  &lt;p class=&#39;aboutDesc&#39;&gt;坚持 Internet 的开放&#12289;平等&#12289;分享精神&#65292;倡导网络自由&#12289;平等&#12289;开放&#12289;健康 &#65281;&lt;/p&gt;
 &lt;/div&gt;</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
@@ -3766,7 +3707,7 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                     </div>
                   </b:includable>
                 </b:widget>
-                <b:widget id='LinkList001' locked='false' title='Social Media Link' type='LinkList' version='2' visible='false'>
+                <b:widget id='LinkList001' locked='false' title='Social Media Link' type='LinkList' version='2' visible='true'>
                   <b:widget-settings>
                     <b:widget-setting name='link-3'>#</b:widget-setting>
                     <b:widget-setting name='sorting'>NONE</b:widget-setting>
@@ -3864,11 +3805,11 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                   <b:widget-settings>
                     <b:widget-setting name='sorting'>NONE</b:widget-setting>
                     <b:widget-setting name='text-1'>免责声明</b:widget-setting>
-                    <b:widget-setting name='link-1'>https://www.iyio.net/p/services.html</b:widget-setting>
+                    <b:widget-setting name='link-1'>https://www.iyio.net/p/privacy.html</b:widget-setting>
                     <b:widget-setting name='text-0'>网站地图</b:widget-setting>
-                    <b:widget-setting name='link-2'>https://www.iyio.net/p/services.html</b:widget-setting>
+                    <b:widget-setting name='link-2'>https://www.iyio.net/p/privacy.html</b:widget-setting>
                     <b:widget-setting name='link-0'>https://www.iyio.net/p/sitemaps.html</b:widget-setting>
-                    <b:widget-setting name='text-2'> 隐私声明</b:widget-setting>
+                    <b:widget-setting name='text-2'>隐私政策</b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
                     <b:include name='widget-title'/>
@@ -3892,9 +3833,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
                 </b:widget>
               </b:section>
               <b:section id='footer-widget-4' maxwidgets='2' showaddelement='true'>
-                <b:widget id='HTML1' locked='false' title='联系我们' type='HTML' visible='true'>
+                <b:widget id='HTML1' locked='false' title='即时联系' type='HTML' visible='true'>
                   <b:widget-settings>
-                    <b:widget-setting name='content'><![CDATA[<p>您可以直接给我们取得联系！</p><p><a class='button telegram' href='https://t.me/pygllc'><i class='icon telegram'></i>Telegram</a></p>]]></b:widget-setting>
+                    <b:widget-setting name='content'><![CDATA[<p>您可通过Telegram直接给我们取得联系！</p><p><a class='button telegram' href='https://t.me/pygllc'><i class='icon telegram'></i>Telegram</a></p>]]></b:widget-setting>
                   </b:widget-settings>
                   <b:includable id='main'>
   <b:include name='widget-title'/>
@@ -3918,14 +3859,14 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
         </footer>
         
         <b:if cond='!data:view.isHomepage and !data:view.isPage and data:blog.isMobileRequest'>
-          <!--[ 粘性广告 ]-->
+          <!--[ Sticky ad ]-->
           <!--<input class='stickAdin hidden' id='stickAdin' type='checkbox'/>
           <div class='stickAd'>
             <label class='stickAdclose' for='stickAdin'>
               <svg class='line' viewBox='0 0 24 24'><line x1='18' x2='6' y1='6' y2='18'/><line x1='6' x2='18' y1='6' y2='18'/></svg>
             </label>
             <div class='stickAdcontent'>
-              <ins class='adsbygoogle' data-ad-client='ca-pub-3297688630930670' data-ad-format='horizontal' data-ad-slot='0000000000' data-full-width-responsive='false' style='display:block;text-align:center'/>
+              <ins class='adsbygoogle' data-ad-client='ca-pub-0000000000000000' data-ad-format='horizontal' data-ad-slot='0000000000' data-full-width-responsive='false' style='display:block;text-align:center'/>
               <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
           </div>-->
@@ -3935,9 +3876,9 @@ class TableOfContents { constructor({ from, to }) { this.fromElement = from; thi
         <!--[ Error pages ]-->
         <section class='errorPage'>
           <div class='errorContent'>
-            <h3><span>404</span>Something Wrong!</h3>
-            <p>The page you&#39;ve requested can&#39;t be found. Why don&#39;t you browse around?</p>
-            <a class='button' expr:href='data:blog.homepageUrl.canonical'>Take me back</a>
+            <h3><span>404</span>当前页面消失了!</h3>
+            <p>你要查看的网页可能暂时不可用,或者已被删除.修改.更新!请返回主页查看更多...</p>
+            <a class='button' expr:href='data:blog.homepageUrl.canonical'>返回主页</a>
           </div>
         </section>
       </b:if>
@@ -3961,18 +3902,19 @@ function copyFunction(){document.getElementById("getlink").select(),document.exe
     </b:if>
     
     <b:if cond='!data:view.isPage'>
-      <!--[ 带有自动广告的 Adsense 脚本 ]-->
-      <!--<script>/*<![CDATA[*/ (function() { var add = document.createElement('script'); var att = document.createAttribute('data-ad-client'); att.value = 'ca-pub-3297688630930670'; add.setAttributeNode(att); add.defer = true; add.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'; var sc = document.getElementsByTagName('head')[0]; sc.parentNode.insertBefore(add, sc); })(); /*]]>*/</script>-->      
+      <!--[ Adsense Script with auto ads ]-->
+      <!--<script>/*<![CDATA[*/ (function() { var add = document.createElement('script'); var att = document.createAttribute('data-ad-client'); att.value = 'ca-pub-0000000000000000'; add.setAttributeNode(att); add.defer = true; add.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'; var sc = document.getElementsByTagName('head')[0]; sc.parentNode.insertBefore(add, sc); })(); /*]]>*/</script>-->      
       
-      <!--[ 带有自动广告的 Lazy adsense 脚本 ]-->
-      <!--<script>/*<![CDATA[*/ var lazyadsense = false; window.addEventListener("scroll", function(){ if ((document.documentElement.scrollTop != 0 && lazyadsense === false) || (document.body.scrollTop != 0 && lazyadsense === false)) { (function() { var ad = document.createElement('script'); var att = document.createAttribute('data-ad-client'); att.value = 'ca-pub-3297688630930670'; ad.setAttributeNode(att);  ad.async = true; ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'; var sc = document.getElementsByTagName('head')[0]; sc.parentNode.insertBefore(ad, sc); })(); lazyadsense = true; } }, true) /*]]>*/</script>-->
+      <!--[ Lazy adsense Script with auto ads ]-->
+      <!--<script>/*<![CDATA[*/ var lazyadsense = false; window.addEventListener("scroll", function(){ if ((document.documentElement.scrollTop != 0 && lazyadsense === false) || (document.body.scrollTop != 0 && lazyadsense === false)) { (function() { var ad = document.createElement('script'); var att = document.createAttribute('data-ad-client'); att.value = 'ca-pub-0000000000000000'; ad.setAttributeNode(att);  ad.async = true; ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'; var sc = document.getElementsByTagName('head')[0]; sc.parentNode.insertBefore(ad, sc); })(); lazyadsense = true; } }, true) /*]]>*/</script>-->
     </b:if>
-<b:if cond='data:view.isSingleItem'>
-  <script>/*<![CDATA[*/ var Base64 = {_keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", encode: function (input) {var output = ""; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0; input = Base64._utf8_encode(input); while (i < input.length) {chr1 = input.charCodeAt(i++); chr2 = input.charCodeAt(i++); chr3 = input.charCodeAt(i++); enc1 = chr1 >> 2; enc2 = ((chr1 & 3) << 4) | (chr2 >> 4); enc3 = ((chr2 & 15) << 2) | (chr3 >> 6); enc4 = chr3 & 63; if (isNaN(chr2)) {enc3 = enc4 = 64;} else if (isNaN(chr3)) {enc4 = 64;} output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);} return output; }, decode: function (input) {var output = ""; var chr1, chr2, chr3; var enc1, enc2, enc3, enc4; var i = 0; input = input.replace(/[^A-Za-z0-9\+\/\=]/g, ""); while (i < input.length) {enc1 = this._keyStr.indexOf(input.charAt(i++)); enc2 = this._keyStr.indexOf(input.charAt(i++)); enc3 = this._keyStr.indexOf(input.charAt(i++)); enc4 = this._keyStr.indexOf(input.charAt(i++)); chr1 = (enc1 << 2) | (enc2 >> 4); chr2 = ((enc2 & 15) << 4) | (enc3 >> 2); chr3 = ((enc3 & 3) << 6) | enc4; output = output + String.fromCharCode(chr1); if (enc3 != 64) {output = output + String.fromCharCode(chr2);} if (enc4 != 64) {output = output + String.fromCharCode(chr3);} } output = Base64._utf8_decode(output); return output;}, _utf8_encode: function (string) {string = string.replace(/\r\n/g, "\n"); var utftext = ""; for (var n = 0; n < string.length; n++) {var c = string.charCodeAt(n); if (c < 128) {utftext += String.fromCharCode(c);} else if ((c > 127) && (c < 2048)) {utftext += String.fromCharCode((c >> 6) | 192); utftext += String.fromCharCode((c & 63) | 128);} else {utftext += String.fromCharCode((c >> 12) | 224); utftext += String.fromCharCode(((c >> 6) & 63) | 128); utftext += String.fromCharCode((c & 63) | 128); }} return utftext;}, _utf8_decode: function (utftext) {var string = ""; var i = 0; var c = c1 = c2 = 0; while (i < utftext.length) {c = utftext.charCodeAt(i); if (c < 128) {string += String.fromCharCode(c); i++;} else if ((c > 191) && (c < 224)) {c2 = utftext.charCodeAt(i + 1); string += String.fromCharCode(((c & 31) << 6) | (c2 & 63)); i += 2;} else {c2 = utftext.charCodeAt(i + 1); c3 = utftext.charCodeAt(i + 2); string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63)); i += 3;}} return string; }}; var protected_links = ""; var a_to_va = 0; var a_to_vb = 0; var a_to_vc = ""; function auto_safelink() {auto_safeconvert();}; function auto_safeconvert() {var a_to_vd = window.location.hostname; if (protected_links != "" && !protected_links.match(a_to_vd)) {protected_links += ", " + a_to_vd;} else if (protected_links == "") {protected_links = a_to_vd;} var a_to_ve = ""; var a_to_vf = new Array(); var a_to_vg = 0; a_to_ve = document.getElementsByTagName("a"); a_to_va = a_to_ve.length; a_to_vf = a_to_fa(); a_to_vg = a_to_vf.length; var a_to_vh = false; var j = 0; var daftarPostingan = [ "https://www.iyio.net/p/safelink.html" ]; var randomPostingan = daftarPostingan[Math.floor(Math.random()*daftarPostingan.length)]; var a_to_vi = ""; for (var i = 0; i < a_to_va; i++) {a_to_vh = false; j = 0; while (a_to_vh == false && j < a_to_vg) {a_to_vi = a_to_ve[i].href; if (a_to_vi.match(a_to_vf[j]) || !a_to_vi || !a_to_vi.match("https")) {a_to_vh = true;} j++; } if (a_to_vh == false) {var encryptedUrl = Base64.encode(a_to_vi); a_to_ve[i].href = randomPostingan + "?url=" + encryptedUrl; a_to_ve[i].rel = "noopener noreferrer"; a_to_vb++; a_to_vc += i + ":::" + a_to_ve[i].href + "\n";} } var a_to_vj = ""; var a_to_vk = ""; if (a_to_vj) {a_to_vj.innerHTML += a_to_vb;} if (a_to_vk) {a_to_vk.innerHTML += a_to_va;} }; function a_to_fa() {var a_to_vf = new Array(); protected_links = protected_links.replace(" ", ""); a_to_vf = protected_links.split(","); return a_to_vf;}; /*]]>*/</script>
 
-  <!--[ Protect link from encode ]-->
-  <script>protected_links = &quot;iyio.net,iyioaoy.blogspot.com,googleusercontent.com,facebook.com,whatsapp.com,t.me,pinterest.com,linkedin.com,tumblr.com,line.me,bp.blogspot.com,twitter.com,youtube.com,instagram.com,ikxsw.blogspot.com,vultr.com,www.blogger.com,1.bp.blogspot.com,2.bp.blogspot.com,3.bp.blogspot.com,4.bp.blogspot.com,5.bp.blogspot.com&quot;; auto_safelink(); </script>
-</b:if>   
+<b:if cond='data:view.isSingleItem'>
+  <script>/*<![CDATA[*/ var Base64 = {_keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", encode: function (input) {var output = ""; var chr1, chr2, chr3, enc1, enc2, enc3, enc4; var i = 0; input = Base64._utf8_encode(input); while (i < input.length) {chr1 = input.charCodeAt(i++); chr2 = input.charCodeAt(i++); chr3 = input.charCodeAt(i++); enc1 = chr1 >> 2; enc2 = ((chr1 & 3) << 4) | (chr2 >> 4); enc3 = ((chr2 & 15) << 2) | (chr3 >> 6); enc4 = chr3 & 63; if (isNaN(chr2)) {enc3 = enc4 = 64;} else if (isNaN(chr3)) {enc4 = 64;} output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);} return output; }, decode: function (input) {var output = ""; var chr1, chr2, chr3; var enc1, enc2, enc3, enc4; var i = 0; input = input.replace(/[^A-Za-z0-9\+\/\=]/g, ""); while (i < input.length) {enc1 = this._keyStr.indexOf(input.charAt(i++)); enc2 = this._keyStr.indexOf(input.charAt(i++)); enc3 = this._keyStr.indexOf(input.charAt(i++)); enc4 = this._keyStr.indexOf(input.charAt(i++)); chr1 = (enc1 << 2) | (enc2 >> 4); chr2 = ((enc2 & 15) << 4) | (enc3 >> 2); chr3 = ((enc3 & 3) << 6) | enc4; output = output + String.fromCharCode(chr1); if (enc3 != 64) {output = output + String.fromCharCode(chr2);} if (enc4 != 64) {output = output + String.fromCharCode(chr3);} } output = Base64._utf8_decode(output); return output;}, _utf8_encode: function (string) {string = string.replace(/\r\n/g, "\n"); var utftext = ""; for (var n = 0; n < string.length; n++) {var c = string.charCodeAt(n); if (c < 128) {utftext += String.fromCharCode(c);} else if ((c > 127) && (c < 2048)) {utftext += String.fromCharCode((c >> 6) | 192); utftext += String.fromCharCode((c & 63) | 128);} else {utftext += String.fromCharCode((c >> 12) | 224); utftext += String.fromCharCode(((c >> 6) & 63) | 128); utftext += String.fromCharCode((c & 63) | 128); }} return utftext;}, _utf8_decode: function (utftext) {var string = ""; var i = 0; var c = c1 = c2 = 0; while (i < utftext.length) {c = utftext.charCodeAt(i); if (c < 128) {string += String.fromCharCode(c); i++;} else if ((c > 191) && (c < 224)) {c2 = utftext.charCodeAt(i + 1); string += String.fromCharCode(((c & 31) << 6) | (c2 & 63)); i += 2;} else {c2 = utftext.charCodeAt(i + 1); c3 = utftext.charCodeAt(i + 2); string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63)); i += 3;}} return string; }}; var protected_links = ""; var a_to_va = 0; var a_to_vb = 0; var a_to_vc = ""; function auto_safelink() {auto_safeconvert();}; function auto_safeconvert() {var a_to_vd = window.location.hostname; if (protected_links != "" && !protected_links.match(a_to_vd)) {protected_links += ", " + a_to_vd;} else if (protected_links == "") {protected_links = a_to_vd;} var a_to_ve = ""; var a_to_vf = new Array(); var a_to_vg = 0; a_to_ve = document.getElementsByTagName("a"); a_to_va = a_to_ve.length; a_to_vf = a_to_fa(); a_to_vg = a_to_vf.length; var a_to_vh = false; var j = 0; var daftarPostingan = [ "https://www.iyio.net/p/go.html" ]; var randomPostingan = daftarPostingan[Math.floor(Math.random()*daftarPostingan.length)]; var a_to_vi = ""; for (var i = 0; i < a_to_va; i++) {a_to_vh = false; j = 0; while (a_to_vh == false && j < a_to_vg) {a_to_vi = a_to_ve[i].href; if (a_to_vi.match(a_to_vf[j]) || !a_to_vi || !a_to_vi.match("https")) {a_to_vh = true;} j++; } if (a_to_vh == false) {var encryptedUrl = Base64.encode(a_to_vi); a_to_ve[i].href = randomPostingan + "?url=" + encryptedUrl; a_to_ve[i].rel = "noopener noreferrer"; a_to_vb++; a_to_vc += i + ":::" + a_to_ve[i].href + "\n";} } var a_to_vj = ""; var a_to_vk = ""; if (a_to_vj) {a_to_vj.innerHTML += a_to_vb;} if (a_to_vk) {a_to_vk.innerHTML += a_to_va;} }; function a_to_fa() {var a_to_vf = new Array(); protected_links = protected_links.replace(" ", ""); a_to_vf = protected_links.split(","); return a_to_vf;}; /*]]>*/</script>
+  <!--[ 安全连接网址白名单 ]-->
+  <script>protected_links = &quot;iyio.net,oaoy.net,googleusercontent.com,facebook.com,whatsapp.com,t.me,pinterest.com,linkedin.com,tumblr.com,line.me,bp.blogspot.com,twitter.com,youtube.com,instagram.com,vultr.com,www.blogger.com,1.bp.blogspot.com,2.bp.blogspot.com,3.bp.blogspot.com,4.bp.blogspot.com,5.bp.blogspot.com&quot;; auto_safelink(); </script>
+</b:if> 
+
   <!--[ </body> close ]-->
   &lt;!--</body>--&gt;&lt;/body&gt;
 </html>
